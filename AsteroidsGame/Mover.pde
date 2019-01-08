@@ -67,7 +67,7 @@ interface Movable {
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
  Abstract base class Mover 
  */
-abstract class Mover {// implements Movable {
+abstract class Mover implements Movable {
 
   protected float x, y;
   protected float speed;
@@ -96,6 +96,8 @@ abstract class Mover {// implements Movable {
     myColor = 225;
     radius = 0.0;
   }
+  
+  
 
   /*
     Most of your movalbe objects should follow this pattern.
@@ -121,9 +123,19 @@ abstract class Mover {// implements Movable {
   /*
     TODO: Part 4: Implement collision detection
    */
-  boolean collidingWith(Movable object){
-     return false; 
-  }
+  boolean collidingWith(Movable object){return false; }
   
-  //TODO: Part I: implement the methods of Moveable interface - delete this comment
+  float getX(){return x;}
+
+  float getY(){return y;}
+
+  float getDirection(){return direction;}
+
+  float getSpeed(){return speed;}
+
+  float getRadius(){return radius;}
+
+  void setDirection(float newDirectionInDegrees){direction = newDirectionInDegrees;}
+
+  void setSpeed(float newSpeed){speed = newSpeed;}
 }
