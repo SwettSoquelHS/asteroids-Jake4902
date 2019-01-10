@@ -6,9 +6,11 @@
 */
 class Spaceship extends Mover { 
   
-  Spaceship(float x, float y){
-    super(x,y);
-  }
+  Spaceship(float x, float y){super(x,y);}
+    
+  Spaceship(float x, float y, float speed, float direction) {
+    super(x,y,speed,direction);
+    }
   
   void show(){
     pushMatrix();
@@ -24,5 +26,14 @@ class Spaceship extends Mover {
     popMatrix();
   }
   
+  void updateSpeed(float addSpeed){
+    speed += addSpeed;
+    if(speed < 0){
+      speed = 0;
+    }
+  }
   
+  void updateDirection(float addDirection){
+    direction += addDirection;
+  }
 }

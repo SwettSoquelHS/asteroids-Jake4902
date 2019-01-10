@@ -1,7 +1,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * *
  Class variable declarations here
  */
-Spaceship player1;
+Spaceship ship;
 //Asteroid[] asteroids;
 //Star[] starField;
 
@@ -13,6 +13,7 @@ boolean ROTATE_LEFT;  //User is pressing <-
 boolean ROTATE_RIGHT; //User is pressing ->
 boolean MOVE_FORWARD; //User is pressing ^ arrow
 boolean SPACE_BAR;    //User is pressing space bar
+boolean SLOW_DOWN;    //User is pressing \/(down) arrow
 
   
 /* * * * * * * * * * * * * * * * * * * * * * *
@@ -20,6 +21,7 @@ boolean SPACE_BAR;    //User is pressing space bar
  */
 public void setup() {
   size(640, 400);
+  ship = new Spaceship(10.0,10.0,10.0,10.0);
   
   //initialize your asteroid array and fill it
   
@@ -35,6 +37,20 @@ public void setup() {
 public void draw() {
   //your code here
   background(0);
+  ship.show();
+  
+  if(ROTATE_LEFT){
+   ship.updateDirection(-3.0);
+  }
+  if(ROTATE_RIGHT){
+    ship.updateDirection(3.0);
+  }
+  if(MOVE_FORWARD){
+    ship.updateSpeed(1.0);
+  }
+  if(SLOW_DOWN){
+    ship.updateSpeed(-1.0);
+  }
   
   //Draw Starfield first 
   //TODO: Part I
