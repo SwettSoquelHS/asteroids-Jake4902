@@ -2,6 +2,10 @@
  Class variable declarations here
  */
 Spaceship ship;
+
+Star centuri[];
+
+Asteroid rocks[];
 //Asteroid[] asteroids;
 //Star[] starField;
 
@@ -21,7 +25,18 @@ boolean SLOW_DOWN;    //User is pressing \/(down) arrow
  */
 public void setup() {
   size(640, 400);
-  ship = new Spaceship(10.0,10.0,10.0,10.0);
+  ship = new Spaceship(width/2,height/2);
+  
+  centuri = new Star[150];
+  for(int i = 0; i < centuri.length; i++){
+    centuri[i] = new Star();
+  }
+  
+  rocks = new Asteroid[100];
+  for(int i = 0; i < rocks.length; i++){
+    rocks[i] = new Asteroid(0,0);
+  }
+  
   
   //initialize your asteroid array and fill it
   
@@ -37,19 +52,31 @@ public void setup() {
 public void draw() {
   //your code here
   background(0);
+  for(int i = 0; i < centuri.length; i++){
+    centuri[i].show();
+  }
+  ship.update();
   ship.show();
   
+  for(int i = 0; i < rocks.length; i++){
+    rocks[i].update();
+    rocks[i].show();
+  }
+  
+  
+  
+  
   if(ROTATE_LEFT){
-   ship.updateDirection(-3.0);
+   ship.updateDirection(-1.0);
   }
   if(ROTATE_RIGHT){
-    ship.updateDirection(3.0);
+    ship.updateDirection(1.0);
   }
   if(MOVE_FORWARD){
-    ship.updateSpeed(1.0);
+    ship.addSpeed(.1);
   }
   if(SLOW_DOWN){
-    ship.updateSpeed(-1.0);
+    ship.subtractSpeed(.1);
   }
   
   //Draw Starfield first 
@@ -94,6 +121,8 @@ void keyPressed() {
       ROTATE_RIGHT = true;
     } else if (keyCode == UP) {
       MOVE_FORWARD = true;
+    } else if (keyCode == DOWN) {
+      SLOW_DOWN = true;
     }
   }
 
@@ -116,9 +145,26 @@ void keyReleased() {
       ROTATE_RIGHT = false;
     } else if (keyCode == UP) {
       MOVE_FORWARD = false;
+    } else if (keyCode == DOWN) {
+      SLOW_DOWN = false;
     }
   }
   if (keyCode == 32) {
     SPACE_BAR = false;
   }
 }
+
+
+/*void checkOnAsteroids(){
+  for(int i = 0; rocks.length; i++){
+    Asteroid a = rocks[i];
+    for(int j = 0; j < rocks.length; j++){
+      Asteroid b = rocks[j];
+      if(a != b && a.collidingWith(b)){
+        //do something...
+        
+      }
+    }
+  }
+}
+*/

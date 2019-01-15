@@ -14,7 +14,7 @@ class Spaceship extends Mover {
   
   void show(){
     pushMatrix();
-    translate(width/2,height/2);
+    translate(x,y);
     rotate(radians(direction));
     fill(155);
     scale(.7);
@@ -26,14 +26,26 @@ class Spaceship extends Mover {
     popMatrix();
   }
   
-  void updateSpeed(float addSpeed){
-    speed += addSpeed;
-    if(speed < 0){
+  void addSpeed(float add){
+    if(speed < 3.0){
+      speed += add;
+    }else if(speed < 0){
       speed = 0;
     }
   }
   
+  
+  void subtractSpeed(float minus){
+    if(speed > 0){
+      speed -= minus;
+    }
+  }
+  
   void updateDirection(float addDirection){
-    direction += addDirection;
+    if(speed < 2.0){
+       direction += addDirection; 
+    }else if(speed >= 1.5){
+       direction += (addDirection*4);
+    }
   }
 }
