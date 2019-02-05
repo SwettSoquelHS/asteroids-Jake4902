@@ -105,6 +105,7 @@ abstract class Mover implements Movable {
   void update() {
     x = x + speed*(float)Math.cos(radians(direction));
     y = y + speed*(float)Math.sin(radians(direction));
+    
 
     //todo: You need to decide what to do when X is less than 0 or greater than width
     //todo: You need to decide what to do when Y is less than 0 or greater than height
@@ -123,11 +124,25 @@ abstract class Mover implements Movable {
   /*
     TODO: Part 4: Implement collision detection
    */
-  boolean collidingWith(Movable m){
-    float distance = dist(x, y, m.getX(), m.getY());
-    boolean touching = distance < (radius + m.getRadius());
-    return touching;
-  }
+    boolean collidingWith(Movable m) {
+    //Can't collide with yourself
+    if (this == m) {
+      return false;
+    }
+    
+    //How far away are OUR centers
+    float d = dist(x, y, m.getX(), m.getY());    
+    
+    //If both of our radi added are greater than or equal to d, then we have collided
+    if ((radius + m.getRadius()) >= d) {
+     return true;  
+    }
+    return false;
+ }
+ 
+ void collision(Movable m){
+   
+ }
   
   float getX(){return x;}
 
