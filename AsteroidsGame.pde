@@ -32,7 +32,7 @@ public void setup() {
     centauri[i] = new Star();
   }
   
-  rocks = new Asteroid[100];
+  rocks = new Asteroid[20];
   for(int i = 0; i < rocks.length; i++){
     rocks[i] = new Asteroid(0,0);
   }
@@ -52,11 +52,16 @@ public void setup() {
 public void draw() {
   //your code here
   background(0);
+  
+  checkOnAsteroids();
+  
+  
   for(int i = 0; i < centauri.length; i++){
     centauri[i].show();
   }
   ship.update();
   ship.show();
+  
   
   for(int i = 0; i < rocks.length; i++){
     rocks[i].update();
@@ -155,16 +160,16 @@ void keyReleased() {
 }
 
 
-/*void checkOnAsteroids(){
-  for(int i = 0; rocks.length; i++){
+void checkOnAsteroids(){
+  for(int i = 0; i < rocks.length; i++){
     Asteroid a = rocks[i];
     for(int j = 0; j < rocks.length; j++){
       Asteroid b = rocks[j];
       if(a != b && a.collidingWith(b)){
-        //do something...
+        a.setDirection((a.getDirection() + 180));
+        b.setDirection((b.getDirection() + 180));
         
       }
     }
   }
 }
-*/

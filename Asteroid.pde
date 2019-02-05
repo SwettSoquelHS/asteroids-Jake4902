@@ -8,34 +8,40 @@
 */
 class Asteroid extends Mover {
   //your code here
-  float randX;
-  float randY;
   
   
   Asteroid(float x, float y){
     super(x,y);
-    speed = (float)(Math.random()*1);
-    direction = (float)((Math.random()*2*PI)+1);
+    speed = (float)((Math.random()*1.5)+.1);
+    direction = (float)(Math.random()*(360));
   }
+  
   
   
   void show(){
     float[] xPos = new float[10];
     float[] yPos = new float[10];
-    xPos[0] = 0;
-    yPos[0] = 10;
-    xPos[1] = 10;
-    yPos[1] = 0;
-    xPos[2] = 0;
-    yPos[2] = -10;
-    xPos[3] = -10;
-    yPos[3] = 0;
-    xPos[4] = -5;
-    yPos[4] = -5;
+    float wid = width/2;
+    float het = height/2;
+    if(x < -width/2 || x > width/2){
+      direction = direction+180;
+    }
+    if(y < -height/2 || y > height/2){
+      direction = direction+180;
+    }
+    xPos[0] = 0+wid;
+    yPos[0] = 10+het;
+    xPos[1] = 10+wid;
+    yPos[1] = 0+het;
+    xPos[2] = 0+wid;
+    yPos[2] = -10+het;
+    xPos[3] = -10+wid;
+    yPos[3] = 0+het;
+    xPos[4] = -5+wid;
+    yPos[4] = -5+het;
     
     
     
-    translate(width/2,height/2);
     fill(150);
     beginShape();
     vertex(xPos[0]+x, yPos[0]+y);
