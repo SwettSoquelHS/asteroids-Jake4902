@@ -3,7 +3,7 @@
  */
 Spaceship ship;
 
-Star centuri[];
+Star centauri[];
 
 Asteroid rocks[];
 //Asteroid[] asteroids;
@@ -27,12 +27,12 @@ public void setup() {
   size(640, 400);
   ship = new Spaceship(width/2,height/2);
   
-  centuri = new Star[150];
-  for(int i = 0; i < centuri.length; i++){
-    centuri[i] = new Star();
+  centauri = new Star[150];
+  for(int i = 0; i < centauri.length; i++){
+    centauri[i] = new Star();
   }
   
-  rocks = new Asteroid[100];
+  rocks = new Asteroid[20];
   for(int i = 0; i < rocks.length; i++){
     rocks[i] = new Asteroid(0,0);
   }
@@ -52,16 +52,23 @@ public void setup() {
 public void draw() {
   //your code here
   background(0);
-  for(int i = 0; i < centuri.length; i++){
-    centuri[i].show();
+  
+  
+  
+  
+  for(int i = 0; i < centauri.length; i++){
+    centauri[i].show();
   }
   ship.update();
   ship.show();
   
+  checkOnAsteroids();
   for(int i = 0; i < rocks.length; i++){
     rocks[i].update();
     rocks[i].show();
+    
   }
+  
   
   
   
@@ -155,16 +162,14 @@ void keyReleased() {
 }
 
 
-/*void checkOnAsteroids(){
-  for(int i = 0; rocks.length; i++){
+void checkOnAsteroids(){
+  for(int i = 0; i < rocks.length; i++){
     Asteroid a = rocks[i];
     for(int j = 0; j < rocks.length; j++){
       Asteroid b = rocks[j];
-      if(a != b && a.collidingWith(b)){
-        //do something...
-        
+      if(a != b && a.collidingWith(b) == true){
+        a.setSpeed(0);
       }
     }
   }
 }
-*/
