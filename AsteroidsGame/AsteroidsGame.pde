@@ -36,7 +36,9 @@ public void setup() {
   
   rocks = new Asteroid[20];
   for(int i = 0; i < rocks.length; i++){
-    rocks[i] = new Asteroid(0,0);
+    float randX = (float)(Math.random()*width);
+    float randY = (float)(Math.random()*height);
+    rocks[i] = new Asteroid(randX,randY);
   }
   
   

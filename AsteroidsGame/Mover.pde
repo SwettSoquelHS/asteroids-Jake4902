@@ -94,7 +94,7 @@ abstract class Mover implements Movable {
     this.speed = speed;
     this.direction = direction;
     myColor = 225;
-    radius = 0.0;
+    radius = 10;
   }
   
   

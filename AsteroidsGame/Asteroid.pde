@@ -8,9 +8,6 @@
 */
 class Asteroid extends Mover {
   //your code here
-  float randX = (float)(Math.random()*640);
-  float randY = (float)(Math.random()*400);
-  
   Asteroid(float x, float y){
     super(x,y);
     speed = (float)((Math.random()*1.5)+.1);
@@ -23,10 +20,10 @@ class Asteroid extends Mover {
   void show(){
     float[] xPos = new float[10];
     float[] yPos = new float[10];
-    if(x+randX > width || x+randX < 0){
+    if(x > width || x < 0){
       direction = direction+180;
     }
-    if(y+randY > height || y+randY < 0){
+    if(y > height || y < 0){
       direction = direction+180;
     }
     
@@ -54,7 +51,7 @@ class Asteroid extends Mover {
     vertex(xPos[4]+x, yPos[4]+y);
     endShape();
     */
-    ellipse(randX+x,randY+y,20,20);
+    ellipse(x,y,20,20);
     
     //popMatrix();
   }
