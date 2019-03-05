@@ -6,6 +6,8 @@ Spaceship ship;
 Star centauri[];
 
 Asteroid rocks[];
+
+ArrayList<Bullet> bulls;
 //Asteroid[] asteroids;
 //Star[] starField;
 
@@ -84,6 +86,10 @@ public void draw() {
   }
   if(SLOW_DOWN){
     ship.subtractSpeed(.1);
+  }
+  if(SPACE_BAR){
+    Bullet bull = new Bullet(ship.getX(), ship.getY(), ship.getSpeed(), ship.getDirection());
+    bulls.add(bull);
   }
   
   //Draw Starfield first 

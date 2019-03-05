@@ -1,8 +1,13 @@
 class Bullet extends Mover{
   private int live;
   
-  Bullet(){
-    super(0,0);
+  Bullet(float x, float y){
+    super(x,y);
+    live = 100;
+  }
+  
+  Bullet(float x, float y, float speed, float direction){
+    super(x,y, speed+1, direction);
     live = 100;
   }
   

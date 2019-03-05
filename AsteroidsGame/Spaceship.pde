@@ -62,6 +62,6 @@ class Spaceship extends Mover {
 
 void fire(){
   if(myBullet != null && !myBullet.isAlive()){
-   myBullet = new Bullet(); //Make sure you have declared a Bullet myBullet for the spaceship
+   myBullet = new Bullet(0,0); //Make sure you have declared a Bullet myBullet for the spaceship
   }
  }
