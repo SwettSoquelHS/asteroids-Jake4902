@@ -10,7 +10,7 @@ class Asteroid extends Mover {
   //your code here
   Asteroid(float x, float y){
     super(x,y);
-    speed = (float)((Math.random()*1.5)+.1);
+    speed = (float)((Math.random()*1)+.1);
     direction = (float)(Math.random()*(360));
     
   }

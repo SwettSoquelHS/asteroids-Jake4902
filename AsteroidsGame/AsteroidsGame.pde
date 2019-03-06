@@ -34,7 +34,7 @@ public void setup() {
     centauri[i] = new Star();
   }
   
-  rocks = new Asteroid[20];
+  rocks = new Asteroid[10];
   for(int i = 0; i < rocks.length; i++){
     float randX = (float)(Math.random()*width);
     float randY = (float)(Math.random()*height);
@@ -176,7 +176,7 @@ void checkOnAsteroids(){
     for(int j = 0; j < rocks.length; j++){
       Asteroid b = rocks[j];
       if(a != b && a.collidingWith(b) == true){
-        a.setSpeed(0);
+        a.setDirection(a.getDirection()+180);
       }
     }
   }
