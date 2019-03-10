@@ -20,39 +20,35 @@ class Asteroid extends Mover {
   void show(){
     float[] xPos = new float[10];
     float[] yPos = new float[10];
+    
+    
+    pushMatrix();
+    translate(x, y);
+    xPos[0] = 0+x;
+    yPos[0] = 10+y;
+    xPos[1] = 10+x;
+    yPos[1] = 0+y;
+    xPos[2] = 0+x;
+    yPos[2] = -10+y;
+    xPos[3] = -10+x;
+    yPos[3] = 0+y;
+    
+    
+    
+    fill(150);
+    beginShape();
+    vertex(xPos[0], yPos[0]);
+    vertex(xPos[1], yPos[1]);
+    vertex(xPos[2], yPos[2]);
+    vertex(xPos[3], yPos[3]);
+    endShape();
+    popMatrix();
+    
     if(x > width || x < 0){
       direction = direction+180;
     }
     if(y > height || y < 0){
       direction = direction+180;
     }
-    
-    //pushMatrix();
-    //translate(randX, randY);
-    /*xPos[0] = 0+randX;
-    yPos[0] = 10+randY;
-    xPos[1] = 10+randX;
-    yPos[1] = 0+randY;
-    xPos[2] = 0+randX;
-    yPos[2] = -10+randY;
-    xPos[3] = -10+randX;
-    yPos[3] = 0+randY;
-    xPos[4] = -5+randX;
-    yPos[4] = -5+randY;
-    
-    
-    
-    fill(150);
-    beginShape();
-    vertex(xPos[0]+x, yPos[0]+y);
-    vertex(xPos[1]+x, yPos[1]+y);
-    vertex(xPos[2]+x, yPos[2]+y);
-    vertex(xPos[3]+x, yPos[3]+y);
-    vertex(xPos[4]+x, yPos[4]+y);
-    endShape();
-    */
-    ellipse(x,y,20,20);
-    
-    //popMatrix();
   }
 }

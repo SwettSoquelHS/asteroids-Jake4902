@@ -1,5 +1,6 @@
 class Bullet extends Mover{
   private int live;
+  int num = 1;
   
   Bullet(float x, float y){
     super(x,y);
@@ -7,13 +8,15 @@ class Bullet extends Mover{
   }
   
   Bullet(float x, float y, float speed, float direction){
-    super(x,y, speed+1, direction);
+    super(x,y, speed, direction);
     live = 100;
   }
   
   void update(){
+    setSpeed(speed*5*num);
     super.update();
     live--;
+    num++;
   }
   
   void show(){

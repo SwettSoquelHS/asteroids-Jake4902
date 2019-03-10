@@ -5,6 +5,8 @@
     might be useful.
 */
 
+Bullet myBullet = new Bullet(0,0);
+
 class Spaceship extends Mover { 
   
   Spaceship(float x, float y){super(x,y);}
@@ -15,6 +17,7 @@ class Spaceship extends Mover {
     
   void update(){
     super.update();
+    myBullet.update();
   }
   
   void show(){
@@ -29,6 +32,9 @@ class Spaceship extends Mover {
     rect(-5,-38,15,5);
     rect(-5,33,15,5);
     popMatrix();
+    
+    myBullet.show();
+   
     
   }
   
@@ -54,10 +60,8 @@ class Spaceship extends Mover {
        direction += (addDirection*4);
     }
   }
-}
-
-void fire(){
-  if(myBullet != null && !myBullet.isAlive()){
-   myBullet = new Bullet(0,0); //Make sure you have declared a Bullet myBullet for the spaceship
-  }
+  
+  void fire(){
+  myBullet = new Bullet(x,y,speed,direction); //Make sure you have declared a Bullet myBullet for the spaceship
  }
+}

@@ -7,10 +7,6 @@ Star centauri[];
 
 Asteroid rocks[];
 
-ArrayList<Bullet> bulls;
-//Asteroid[] asteroids;
-//Star[] starField;
-
 
 /*
   Track User keyboard input
@@ -20,6 +16,7 @@ boolean ROTATE_RIGHT; //User is pressing ->
 boolean MOVE_FORWARD; //User is pressing ^ arrow
 boolean SPACE_BAR;    //User is pressing space bar
 boolean SLOW_DOWN;    //User is pressing \/(down) arrow
+int bullNums = 0;
 
   
 /* * * * * * * * * * * * * * * * * * * * * * *
@@ -90,9 +87,11 @@ public void draw() {
     ship.subtractSpeed(.1);
   }
   if(SPACE_BAR){
-    Bullet bull = new Bullet(ship.getX(), ship.getY(), ship.getSpeed(), ship.getDirection());
-    bulls.add(bull);
-  }
+      bullNums++;
+   }
+   for(int i = 0; i < bullNums; i++){
+     ship.fire();
+   }
   
   //Draw Starfield first 
   //TODO: Part I
