@@ -8,6 +8,7 @@ Star centauri[];
 Asteroid rocks[];
 
 
+
 /*
   Track User keyboard input
  */
@@ -24,6 +25,7 @@ int bullNums = 0;
  */
 public void setup() {
   size(640, 400);
+  frameRate(40);
   ship = new Spaceship(width/2,height/2);
   
   centauri = new Star[150];
@@ -87,11 +89,8 @@ public void draw() {
     ship.subtractSpeed(.1);
   }
   if(SPACE_BAR){
-      bullNums++;
-   }
-   for(int i = 0; i < bullNums; i++){
-     ship.fire();
-   }
+    ship.fire();
+  }
   
   //Draw Starfield first 
   //TODO: Part I
@@ -141,7 +140,7 @@ void keyPressed() {
   }
 
   //32 is spacebar
-  if (keyCode == 32) {  
+  if (keyCode == 32) {
     SPACE_BAR = true;
   }
 }

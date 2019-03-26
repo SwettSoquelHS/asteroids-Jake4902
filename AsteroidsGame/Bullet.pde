@@ -1,6 +1,5 @@
 class Bullet extends Mover{
   private int live;
-  int num = 1;
   
   Bullet(float x, float y){
     super(x,y);
@@ -13,14 +12,13 @@ class Bullet extends Mover{
   }
   
   void update(){
-    setSpeed(speed*5*num);
+    speed += .2;
     super.update();
     live--;
-    num++;
   }
   
   void show(){
-    if(live > 0){
+    if(isAlive()){
       ellipse(x,y,10,10);
     }
   }

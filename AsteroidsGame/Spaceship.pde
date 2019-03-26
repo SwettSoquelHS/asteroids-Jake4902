@@ -4,8 +4,7 @@
     You may add additional methods to this class, for example "rotate" and "accelerate" 
     might be useful.
 */
-
-Bullet myBullet = new Bullet(0,0);
+ArrayList<Bullet> myBullet = new ArrayList<Bullet>();
 
 class Spaceship extends Mover { 
   
@@ -17,7 +16,11 @@ class Spaceship extends Mover {
     
   void update(){
     super.update();
-    myBullet.update();
+    if(myBullet != null){
+      for(int i = 0; i < myBullet.size(); i++){
+        myBullet.get(i).update();
+      }
+    }
   }
   
   void show(){
@@ -32,8 +35,11 @@ class Spaceship extends Mover {
     rect(-5,-38,15,5);
     rect(-5,33,15,5);
     popMatrix();
-    
-    myBullet.show();
+    if(myBullet != null){
+      for(int i = 0; i < myBullet.size(); i++){
+        myBullet.get(i).show();
+      }
+    }
    
     
   }
@@ -62,6 +68,7 @@ class Spaceship extends Mover {
   }
   
   void fire(){
-  myBullet = new Bullet(x,y,speed,direction); //Make sure you have declared a Bullet myBullet for the spaceship
+    Bullet newBullet = new Bullet(x,y,speed,direction);
+    myBullet.add(newBullet);
  }
 }
